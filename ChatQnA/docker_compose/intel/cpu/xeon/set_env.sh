@@ -2,7 +2,8 @@
 
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
-
+export host_ip="172.25.116.82"
+export HUGGINGFACEHUB_API_TOKEN="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"
 
 export EMBEDDING_MODEL_ID="BAAI/bge-base-en-v1.5"
 export RERANK_MODEL_ID="BAAI/bge-reranker-base"
