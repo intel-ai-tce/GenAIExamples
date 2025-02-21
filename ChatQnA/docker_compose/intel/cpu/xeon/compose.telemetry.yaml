@@ -33,6 +33,7 @@ services:
     ports:
       - '9090:9090'
     ipc: host
+    restart: unless-stopped
   grafana:
     image: grafana/grafana:8.2.5
     container_name: grafana
@@ -48,6 +49,7 @@ services:
     ports:
       - '3000:3000'
     ipc: host
+    restart: unless-stopped
   chatqna-xeon-backend-server:
     environment:
       - ENABLE_OPEA_TELEMETRY=true
