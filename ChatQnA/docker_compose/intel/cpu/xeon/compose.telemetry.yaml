@@ -39,7 +39,8 @@ services:
     container_name: grafana
     volumes:
       - ./grafana_data:/var/lib/grafana
-      - ./provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning:/etc/grafana/provisioning
     user: root
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
