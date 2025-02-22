@@ -22,7 +22,7 @@ services:
       COLLECTOR_ZIPKIN_HOST_PORT: 9411
     restart: unless-stopped
   prometheus:
-    image: prom/prometheus:v2.35.0
+    image: prom/prometheus:v2.52.0
     container_name: prometheus
     user: root
     volumes:
@@ -35,7 +35,7 @@ services:
     ipc: host
     restart: unless-stopped
   grafana:
-    image: grafana/grafana:8.2.5
+    image: grafana/grafana:11.0.0
     container_name: grafana
     volumes:
       - ./grafana_data:/var/lib/grafana
