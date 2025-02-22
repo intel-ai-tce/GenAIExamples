@@ -39,6 +39,7 @@ services:
     container_name: grafana
     volumes:
       - ./grafana_data:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
     user: root
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
@@ -50,6 +51,22 @@ services:
       - '3000:3000'
     ipc: host
     restart: unless-stopped
+  node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - --collector.filesystem.ignored-mount-points
+      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    ports:
+      - 9100:9100
+    restart: always
+    deploy:
+      mode: global
   chatqna-xeon-backend-server:
     environment:
       - ENABLE_OPEA_TELEMETRY=true
